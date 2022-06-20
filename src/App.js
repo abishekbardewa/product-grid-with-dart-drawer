@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import FeaturedProducts from './components/FeatruedProducts/FeaturedProducts';
+import Navbar from './components/Navbar/Navbar';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [products, setProducts] = useState();
+	useEffect(() => {
+		getProducts();
+	}, []);
+
+	const getProducts = async () => {
+		const url = './products.json';
+		const response = await fetch(url);
+		const json = await response.json();
+		setProducts(json.products);
+	};
+
+	return (
+		<main>
+			<Navbar />
+			<FeaturedProducts products={products} />
+		</main>
+	);
 }
 
 export default App;
