@@ -32,7 +32,7 @@ It render the Product Component
 It renders the ProductImages component, which renders variant component,which renders Color and Size component
 AddToCart button is disabled untill the user selects color and size of product.
 
-# Estimated time to complete your test.
+### Estimated time to complete your test.
 
 2 days
 
